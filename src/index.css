@@ -1,0 +1,29 @@
+/* src/index.css */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.light {
+  background-color: #fff;
+  color: #000;
+  min-height: 100vh;
+}
+
+.dark {
+  background-color: #222;
+  color: #fff;
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-top: 5px;
+}
+div > div {
+  border: 1px solid gray;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 8px;
+}
