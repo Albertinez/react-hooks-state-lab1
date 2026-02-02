@@ -34,9 +34,9 @@ function App() {
 
   return (
     <div className={isDarkMode ? 'dark' : 'light'}>
-      <button onClick={toggleDarkMode}>
-        Toggle Dark Mode
-      </button>
+     <button onClick={toggleDarkMode}>
+  {isDarkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode'}
+</button>
       
       <Filter 
         selectedCategory={selectedCategory}
