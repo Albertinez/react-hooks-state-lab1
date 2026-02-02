@@ -1,19 +1,24 @@
-import ProductCard from "./ProductCard";
+import React from 'react';
 
-function ProductList({ products, category, addToCart }) {
-  const filteredProducts =
-    category === "All"
-      ? products
-      : products.filter((p) => p.category === category);
+function ProductList({ products, onAddToCart }) {
+  if (products.length === 0) {
+    return <p>No products available</p>;
+  }
 
   return (
     <div>
-      {filteredProducts.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          addToCart={addToCart}
-        />
+      {products.map(product => (
+        <div key={product.id}>
+          <h3>{product.name}</h3>
+          <p>Category: {product.category}</p>
+          <p>Price: ${product.price}</p>
+          <button 
+            data-testid={`product-${product.id}`}
+            onClick={() => onAddToCart(product)}
+          >
+            Add to Cart
+          </button>
+        </div>
       ))}
     </div>
   );

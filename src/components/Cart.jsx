@@ -1,10 +1,22 @@
-function Cart({ cart }) {
+import React from 'react';
+
+function Cart({ items }) {
   return (
     <div>
       <h2>Cart</h2>
-      {cart.map((item, index) => (
-        <p key={index}>{item.name} is in your cart.</p>
-      ))}
+      {items.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+        <div>
+          <p>Shopping Cart</p>
+          {items.map((item, index) => (
+            <div key={index}>
+              <p>{item.name} - ${item.price}</p>
+            </div>
+          ))}
+          <p>Total: ${items.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</p>
+        </div>
+      )}
     </div>
   );
 }
