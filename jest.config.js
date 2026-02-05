@@ -1,15 +1,18 @@
-module.exports = {
+export default {
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
+  transform: {
+    '^.+\\.jsx?$': ['babel-jest', { configFile: './.babelrc' }],
+  },
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
-  transform: {
-    '^.+\\.(js|jsx)$': ['babel-jest', { configFile: './babel.config.json' }],
-  },
-  moduleFileExtensions: ['js', 'jsx'],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
   testMatch: [
-    '<rootDir>/src/**/__tests__/**/*.{js,jsx}',
-    '<rootDir>/src/**/*.{spec,test}.{js,jsx}'
+    '**/__tests__/**/*.[jt]s?(x)',
+    '**/?(*.)+(spec|test).[jt]s?(x)'
   ],
+  transformIgnorePatterns: [
+    'node_modules/(?!(.*\\.mjs$))'
+  ],
+  moduleFileExtensions: ['js', 'jsx', 'mjs'],
 };
